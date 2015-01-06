@@ -729,10 +729,62 @@
                 "type": "float",
                 "doc": "The size of the shield text in pixels"
             },
+            "no-text": {
+                "css": "shield-no-text",
+                "type": "boolean",
+                "default-value": false,
+                "default-meaning": "Do not allow shields to show without text.",
+                "doc": "Control whether shields are shown or hidden if text can not be shown."
+            },
+            "width": {
+                "css": "shield-width",
+                "default-value": 10,
+                "doc": "The width of the marker, if using one of the default types.",
+                "type": "expression"
+            },
+            "height": {
+                "css": "shield-height",
+                "default-value": 10,
+                "doc": "The height of the marker, if using one of the default types.",
+                "type": "expression"
+            },
+            "unlock-image": {
+                "css": "shield-unlock-image",
+                "doc": "Control whether shields image are locked.",
+                "type": "boolean",
+                "default-value": false
+            },
+            "fit-image": {
+                "css": "shield-fit-image",
+                "doc": "Control whether shields image size fit to text size.",
+                "type": "boolean",
+                "default-value": false
+            },
+            "fit-padding": {
+                "css": "shield-fit-padding",
+                "doc": "Control whether shields image fit padding.",
+                "type": "expression",
+                "default-value": 0
+            },
             "fill": {
                 "css": "shield-fill",
                 "type": "color",
                 "doc": "The color of the shield text"
+            },
+            "transform": {
+                "css": "shield-transform",
+                "type": "functions",
+                "functions": [
+                    ["matrix", 6],
+                    ["translate", 2],
+                    ["scale", 2],
+                    ["rotate", 3],
+                    ["skewX", 1],
+                    ["skewY", 1]
+                ],
+                "default-value": "",
+                "default-meaning": "No transformation",
+                "doc": "SVG transformation definition"
             },
             "placement": {
                 "css": "shield-placement",
@@ -744,6 +796,21 @@
                 ],
                 "default-value": "point",
                 "doc": "How this shield should be placed. Point placement attempts to place it on top of points, line places along lines multiple times per feature, vertex places on the vertexes of polygons, and interior attempts to place inside of polygons."
+            },
+            "placement-type": {
+                "css": "shield-placement-type",
+                "doc": "Re-position and/or re-size text to avoid overlaps. \"simple\" for basic algorithm (using text-placements string,) \"dummy\" to turn this feature off.",
+                "type": [
+                    "dummy",
+                    "simple"
+                ],
+                "default-value": "dummy"
+            },
+            "placements": {
+                "css": "shield-placements",
+                "type": "string",
+                "default-value": "",
+                "doc": "If \"placement-type\" is set to \"simple\", use this \"POSITIONS,[SIZES]\" string. An example is `text-placements: \"E,NE,SE,W,NW,SW\";` "
             },
             "avoid-edges": {
                 "css": "shield-avoid-edges",
